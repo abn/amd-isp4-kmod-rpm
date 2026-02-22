@@ -133,7 +133,9 @@ install -m 644 %{name}.spec %{_specdir}/%{name}.spec
 mkdir -p %{buildroot}/%{_usrsrc}/akmods/
 # tito renames the tarball, so we ensure the expected filename is present
 # for the nested rpmbuild to find it in _sourcedir.
-cp %{SOURCE0} %{_sourcedir}/%{pkg_kmod_name}-%{version}.tar.gz
+if [ "%{SOURCE0}" != "%{_sourcedir}/%{pkg_kmod_name}-%{version}.tar.gz" ]; then
+    cp %{SOURCE0} %{_sourcedir}/%{pkg_kmod_name}-%{version}.tar.gz
+fi
 rpmbuild --define "_sourcedir %{_sourcedir}" \
          --define "_srcrpmdir %{buildroot}/%{_usrsrc}/akmods/" \
          %{?dist:--define "dist %{dist}"} \
