@@ -1,6 +1,7 @@
 # akmod-amd-isp4-capture
 
 [![Copr Build Status](https://copr.fedorainfracloud.org/coprs/abn/amd-isp4-capture-kmod/package/amd-isp4-capture-kmod/status_image/last_build.png)](https://copr.fedorainfracloud.org/coprs/abn/amd-isp4-capture-kmod/package/amd-isp4-capture-kmod/)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/abn/amd-isp4-capture-kmod-rpm)
 
 Fedora **akmod** package for the AMD ISP4 camera driver, enabling the built-in camera on AMD Ryzen AI Max (Strix Halo) platforms.
 
