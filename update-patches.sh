@@ -30,6 +30,19 @@ B4_DIR="$TMPDIR/raw"
 mkdir -p "$B4_DIR"
 b4 am --no-cover -o "$B4_DIR" "$MSGID"
 
+# b4 >= 0.14 outputs a single .mbx mailbox; older versions output individual .patch files.
+# Normalise to individual files using git mailsplit when needed.
+MBX=$(ls "$B4_DIR"/*.mbx 2>/dev/null | head -1)
+if [[ -n "$MBX" ]]; then
+    echo "==> Splitting mailbox into individual messages..."
+    SPLIT_DIR="$TMPDIR/split"
+    mkdir -p "$SPLIT_DIR"
+    git mailsplit -o"$SPLIT_DIR" "$MBX" >/dev/null
+    # rename to .patch so the loop below works uniformly
+    for f in "$SPLIT_DIR"/[0-9]*; do mv "$f" "${f}.patch"; done
+    B4_DIR="$SPLIT_DIR"
+fi
+
 PATCH_COUNT=$(ls "$B4_DIR"/*.patch 2>/dev/null | wc -l)
 [[ "$PATCH_COUNT" -eq 0 ]] && { echo "ERROR: no patches downloaded" >&2; exit 1; }
 echo "==> Downloaded $PATCH_COUNT patch(es)"

@@ -18,7 +18,7 @@ Summary:        Kernel module source for AMD ISP4 Ryzen AI Max Camera
 License:        GPL-2.0-or-later
 URL:            https://lore.kernel.org/linux-media/
 # Upstream patch series:
-#   v8: https://lore.kernel.org/linux-media/20250212112913.2037239-1-Bin.Du@amd.com/
+#   v9: https://lore.kernel.org/linux-media/20260302073020.148277-1-Bin.Du@amd.com/
 Source0:        %{name}-%{version}.tar.gz
 
 BuildRequires:  gcc
