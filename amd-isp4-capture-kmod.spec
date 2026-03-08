@@ -12,8 +12,8 @@
 
 # ── Main package header (must precede any %%package directives) ──────────────
 Name:           %{pkg_kmod_name}
-Version:        8
-Release:        3
+Version:        9
+Release:        1
 Summary:        Kernel module source for AMD ISP4 Ryzen AI Max Camera
 License:        GPL-2.0-or-later
 URL:            https://lore.kernel.org/linux-media/
@@ -156,6 +156,13 @@ ln -sf "$(ls %{buildroot}/%{_usrsrc}/akmods/*.src.rpm | xargs basename)" \
 %endif
 
 %changelog
+* Sun Mar 08 2026 Arun Babu Neelicattu <arun.neelicattu@gmail.com> 9-1
+- update: AMD ISP4 v9 patch series (2026-03-02) (arun.neelicattu@gmail.com)
+- migrate: replace amdisp4 submodule with in-repo patches
+  (arun.neelicattu@gmail.com)
+- Add DeepWiki badge to README (arun.neelicattu@gmail.com)
+- Fix typo in package names (arun.neelicattu@gmail.com)
+
 * Sun Feb 22 2026 Arun Babu Neelicattu <arun.neelicattu@gmail.com> 8-3
 - Rename package to amd-isp4-capture-kmod (arun.neelicattu@gmail.com)
 - Fix %%install to avoid copying tarball to itself (arun.neelicattu@gmail.com)
